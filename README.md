@@ -2,5 +2,5 @@
 A simple package manager written in Rust.
 
 # Building
-`git clone https://github.com/Kurohe-san/jpm`
+`git clone https://github.com/Kurohe-san/jpm`\m
 `cargo build --release`
