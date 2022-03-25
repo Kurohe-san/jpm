@@ -1,0 +1,22 @@
+{
+    "name": "neofetch",
+    "version": "git",
+    "dependencies": ["bash"],
+    "upstream": "https://github.com/dylanaraps/neofetch",
+    "description": "Neofetch is a CLI tool that displays system information in a clean and simple way.",
+
+    "system_files": [
+        "/usr/bin/neofetch"
+    ],
+    "user_files": [
+        "~/.config/neofetch"
+    ],
+
+    "install": [
+        ["make", "install"]
+    ],
+
+    "remove": [
+        ["make","uninstall"]
+    ]
+}
