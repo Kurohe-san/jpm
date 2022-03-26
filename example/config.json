@@ -1,5 +1,6 @@
 {
     "elevated_privileges": "sudo",
-    "package_db_path": "/var/cache/jpm/packages",
+    "package_db_path": "/var/cache/jpm/db",
+    "package_build_path": "/var/cache/jpm/packages",
     "mirrorlist": ["https://kurohe.xyz/repos/jpm"]
 }

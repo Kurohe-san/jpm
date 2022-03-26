@@ -7,6 +7,7 @@ const CONFIG_PATH: &str = "/etc/jpm/config.json";
 pub struct Config {
     pub elevated_privileges: String,
     pub package_db_path: String,
+    pub package_build_path: String,
     pub mirrorlist: Vec<String>,
 }
 
