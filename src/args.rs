@@ -10,6 +10,7 @@ mod commands {
     pub const FLAG_RECURSE: &str = "-r";
 }
 
+// Parse the command line arguments
 pub fn parse_args() {
     let a: Vec<_> = env::args().collect();
     if a.len() == 1 {
@@ -25,6 +26,7 @@ pub fn parse_args() {
     }
 }
 
+// Install a package and its dependencies
 fn install(package_name: &str) {
     let conf = Config::load_config();
     let p = Package::load_db_path(package_name, &conf);
@@ -55,6 +57,7 @@ fn install(package_name: &str) {
     }
 }
 
+// Remove a package and optionally its dependencies
 fn remove(package_name: &str, recurse: bool) {
     let conf = Config::load_config();
     let p = Package::load_db_path(package_name, &conf);
@@ -77,6 +80,7 @@ fn remove(package_name: &str, recurse: bool) {
     }
 }
 
+// Search for a package in the local package database
 fn search(query: &str) {
     println!("Searching for {}...", query);
     Package::search(query, &Config::load_config());

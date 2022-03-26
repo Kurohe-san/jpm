@@ -1,5 +1,5 @@
 # JPM (Just another package manager)
-A simple package manager written in Rust.
+A simple package manager written in Rust. JPM can install packages that are written in a simple JSON format.
 
 ## Building
 `git clone https://github.com/Kurohe-san/jpm`<br>
