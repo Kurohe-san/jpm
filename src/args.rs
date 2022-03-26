@@ -1,5 +1,7 @@
 use std::env;
-use crate::{package::Package, config::Config};
+use colored::Colorize;
+
+use crate::{package::Package, config::Config, prompt};
 
 mod commands {
     pub const INSTALL: &str = "install";
@@ -23,9 +25,20 @@ pub fn parse_args() {
 }
 
 fn install(package_name: &str) {
-    println!("Installing {}...", package_name);
-    let p = Package::load(format!("{}.json", package_name).as_str());
-    p.sys_install();
+    println!("{}",format!("Installing {}...", package_name).green());
+    let conf = Config::load_config();
+    let p = Package::load_db_path(package_name, &conf);
+    if p.dependencies.len() > 0 {
+        println!("{}",format!("The following dependencies will need to be installed:").yellow());
+        p.dependencies.iter().for_each(|f| println!("{}", format!("   | {}", f).yellow()));
+        if prompt::ask_continue() {
+            p.dependencies.iter().for_each(|p| Package::load_db_path(p, &conf).sys_install());
+            p.sys_install();
+        }
+    }
+    else if prompt::ask_continue() {
+        p.sys_install();
+    }
 }
 
 fn remove(package_name: &str) {
@@ -36,5 +49,5 @@ fn remove(package_name: &str) {
 
 fn search(query: &str) {
     println!("Searching for {}...", query);
-    Package::search(query, Config::load_config());
+    Package::search(query, &Config::load_config());
 }
