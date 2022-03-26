@@ -1,6 +1,7 @@
 use std::io;
 use colored::Colorize;
 
+// Prompt the user if they want to continue with optionally a custom message
 pub fn ask_continue(msg: Option<&str>) -> bool {
     let mut answer = String::new();
     match msg {
